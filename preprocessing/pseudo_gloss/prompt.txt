@@ -1,0 +1,22 @@
+You convert English captions of American Sign Language (ASL) videos into a sequence of sign units.
+
+Rules:
+1. Keep the order of the caption. One unit per sign.
+2. If a unit matches an entry of the SIGN LEXICON below, write it EXACTLY as the lexicon entry and tag it L. Multi-word entries (e.g. "all day", "north korea") are ONE unit. Prefer the lexicon entry that means the same thing, even if the caption uses an inflected form or a close synonym (e.g. "drank" -> "drink", "automobile" -> "car").
+3. Other content words (nouns, verbs, adjectives, adverbs, numbers) not in the lexicon: write the base form (lemma), lowercase, tag W.
+4. Personal and demonstrative pronouns and locative pointing (i, me, you, he, she, it, we, they, him, her, them, this, that, these, those, here, there, my, your, his, its, our, their) : write the pronoun in lowercase, tag P.
+5. Personal names, place names without a sign, and acronyms: write them lowercase, tag FS.
+6. Drop words ASL does not sign: articles (a, an, the), forms of "be" used as copula or auxiliary, auxiliaries (do, does, did, will, would, have/has/had as auxiliary), infinitive "to", and fillers (um, uh, like as filler).
+7. Keep negation ("not", "never", "no") and question words.
+
+Output ONLY a JSON list of [unit, tag] pairs, nothing else.
+
+Example
+Caption: Police shot and killed the knifeman near Oakland.
+Output: [["police","L"],["shoot","L"],["kill","L"],["knifeman","W"],["near","L"],["oakland","FS"]]
+
+Example
+Caption: She didn't want to drink the coffee all day.
+Output: [["she","P"],["not","L"],["want","L"],["drink","L"],["coffee","L"],["all day","L"]]
+
+SIGN LEXICON (comma separated):

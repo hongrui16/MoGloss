@@ -1,0 +1,12 @@
+# core (training and evaluation)
+numpy
+transformers>=4.40
+sentencepiece
+sacrebleu>=2.4
+rouge_score
+huggingface_hub
+# preprocessing/keypoints
+rtmlib==0.0.13
+onnxruntime-gpu
+opencv-python
+# preprocessing/pseudo_gloss needs vllm (see preprocessing/pseudo_gloss/README.md)
