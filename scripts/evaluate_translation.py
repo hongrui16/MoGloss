@@ -29,7 +29,7 @@ def main():
     ap.add_argument('--out_dir', default='')
     ap.add_argument('--batch_size', type=int, default=64)
     a = ap.parse_args()
-    dev = 'cuda'
+    dev = 'cuda' if torch.cuda.is_available() else 'cpu'
     rel = lambda p: p if os.path.isabs(p) else os.path.join(a.data_root, p)
     store = ClipStore(a.data_root, a.setting)
     meta = load_metadata(a.data_root)

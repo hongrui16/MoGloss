@@ -68,6 +68,8 @@ def batchify(feats, idx, mu, sd, max_len, train=False, step_drop=0.0, rng=None):
 
 @torch.no_grad()
 def evaluate(model, feats, idx, y, mu, sd, max_len, dev, bs=256):
+    if len(idx) == 0:
+        return 0.0, 0.0
     model.eval()
     c1 = c5 = 0
     for i in range(0, len(idx), bs):
@@ -75,7 +77,7 @@ def evaluate(model, feats, idx, y, mu, sd, max_len, dev, bs=256):
         x, m = batchify(feats, b, mu, sd, max_len)
         with torch.autocast('cuda', dtype=torch.bfloat16):
             lg = model(x.to(dev), m.to(dev)).float()
-        t5 = lg.topk(5, dim=1).indices.cpu()
+        t5 = lg.topk(min(5, lg.shape[1]), dim=1).indices.cpu()
         yy = torch.from_numpy(y[b])
         c1 += int((t5[:, 0] == yy).sum())
         c5 += int((t5 == yy[:, None]).any(1).sum())
@@ -101,7 +103,7 @@ def main():
     ap.add_argument('--seed', type=int, default=0)
     ap.add_argument('--max_items', type=int, default=0, help='quick test: clips per split')
     a = ap.parse_args()
-    dev = 'cuda'
+    dev = 'cuda' if torch.cuda.is_available() else 'cpu'
     torch.manual_seed(a.seed)
     rng = np.random.default_rng(a.seed)
     clips, gl, sp, feats = load_clips(a.data_root, a.dataset, a.max_items)

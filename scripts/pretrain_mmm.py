@@ -69,7 +69,7 @@ def main():
     ap.add_argument('--workers', type=int, default=12)
     ap.add_argument('--seed', type=int, default=0)
     a = ap.parse_args()
-    dev = 'cuda'
+    dev = 'cuda' if torch.cuda.is_available() else 'cpu'
     torch.manual_seed(a.seed)
     np.random.seed(a.seed)
     random.seed(a.seed)

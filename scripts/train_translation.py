@@ -77,7 +77,7 @@ def main():
     for k, v in DEFAULTS[a.mode].items():
         if getattr(a, k) is None:
             setattr(a, k, v)
-    dev = 'cuda'
+    dev = 'cuda' if torch.cuda.is_available() else 'cpu'
     torch.manual_seed(a.seed)
     random.seed(a.seed)
     os.makedirs(a.out_dir, exist_ok=True)

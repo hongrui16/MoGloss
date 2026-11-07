@@ -80,6 +80,7 @@ def validate(model, loader, dev, seed=0):
         lw += (((ym.float() - zs).abs().mean(-1) * msel).sum() / msel.sum()).item()
         lwo += (((ym0.float() - zs).abs().mean(-1) * msel).sum() / msel.sum()).item()
         k += 1
+    k = max(k, 1)
     return {'unit_acc': acc_true / max(n, 1), 'unit_acc_shuffled_motion': acc_shuf / max(n, 1),
             'motion_l1': lw / k, 'motion_l1_no_text': lwo / k}
 
@@ -102,7 +103,7 @@ def main():
     ap.add_argument('--workers', type=int, default=8)
     ap.add_argument('--seed', type=int, default=0)
     a = ap.parse_args()
-    dev = 'cuda'
+    dev = 'cuda' if torch.cuda.is_available() else 'cpu'
     torch.manual_seed(a.seed)
     random.seed(a.seed)
     os.makedirs(a.out_dir, exist_ok=True)
