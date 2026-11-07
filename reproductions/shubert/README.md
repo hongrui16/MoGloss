@@ -61,13 +61,10 @@ python streams_mediapipe.py --data_root $R --video_root $V --out_dir streams_mp 
 ```
 To recompute stage 1 (for example on new data), run `mp_landmarks.py` and pass its output to stage 2 with `--lm_dir`:
 ```bash
-python mp_landmarks.py --data_root $R --video_root $V --out_dir landmarks --mp_models <models> --box yolo --workers 32
+python mp_landmarks.py --data_root $R --video_root $V --out_dir landmarks --mp_models <models> --workers 32
 python streams_mediapipe.py ... --lm_dir landmarks
 ```
-`--box yolo` is the person box of the SHuBERT preprocessing (YOLOv8n, `clips_bbox.py`). `--box rtmpose` takes the box from the
-RTMPose keypoints instead (mean box of the confident points, widened 0.5 of its width left and right, 0.3 of its height on top and
-0.1 below) and does not need YOLO. Each released landmark file records its box in `bbox`; files made with `--box rtmpose` also carry
-`bbox_src = 'rtm'`.
+`mp_landmarks.py` follows the SHuBERT preprocessing (signer box, then MediaPipe pose, hand and face landmarks).
 
 ### Translation pretraining on YouTube-ASL
 
