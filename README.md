@@ -8,13 +8,26 @@ Project page: **https://hongrui16.github.io/MoGloss** |
 Paper: **[arXiv:2611.25333](https://arxiv.org/abs/2611.25333)** |
 Data, splits and all model weights: **https://huggingface.co/datasets/HenryH101/MoGloss**
 
-**If you use this code, the data or the weights, please cite our paper** (see [Citation](#citation)).
+**If you use this code, the data or the weights, please cite our paper.**
 
 ```
 mogloss/           model, keypoint features, data access, translation utilities
 scripts/           pretraining, translation, recognition, evaluation
 preprocessing/     RTMPose keypoint extraction and pseudo-gloss generation for new data
 reproductions/     our reproductions of Uni-Sign, the YouTube-ASL baseline and SHuBERT
+```
+
+## Citation
+
+If you find this work useful, please cite
+
+```bibtex
+@article{hong2026mogloss,
+  title   = {MoGloss: Joint Motion and Pseudo-Gloss Pretraining for American Sign Language Understanding},
+  author  = {Hong, Rui and Ko{\v{s}}eck{\'a}, Jana},
+  journal = {arXiv preprint arXiv:2611.25333},
+  year    = {2026}
+}
 ```
 
 ## 1. Installation
@@ -204,19 +217,6 @@ pseudo-glosses from captions with a local open-weight language model. See the RE
 under the same data and protocol. Each folder has its own README.
 
 **Uni-Sign is not re-implemented.** We run the official Uni-Sign code (https://github.com/ZechengLi19/Uni-Sign, commit `eed438b`) unmodified: its own model, pose features, batching, loss, argument defaults and metrics. We use only its code, not the keypoints or weights released by Uni-Sign. Our scripts only match our data to it, reading our own RTMPose keypoints, captions and splits into the inputs the official code expects. The one other difference is the launcher (one GPU with gradient accumulation instead of deepspeed, same clips per update).
-
-## Citation
-
-If you find this work useful, please cite
-
-```bibtex
-@article{hong2026mogloss,
-  title   = {MoGloss: Joint Motion and Pseudo-Gloss Pretraining for American Sign Language Understanding},
-  author  = {Hong, Rui and Ko{\v{s}}eck{\'a}, Jana},
-  journal = {arXiv preprint arXiv:2611.25333},
-  year    = {2026}
-}
-```
 
 ## License
 
