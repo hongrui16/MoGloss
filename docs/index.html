@@ -157,7 +157,7 @@ footer{padding:28px 0 48px;color:var(--muted);font-size:14px;text-align:center;b
 <section>
   <h2>Results</h2>
   <h3>Setting A: YouTube-ASL pretraining and per-dataset fine-tuning (BLEU-4)</h3>
-  <p class="note">Every method is trained for translation on the same 785 hours of YouTube-ASL and then fine-tuned per dataset. OpenASL is also split by whether the source video is in YouTube-ASL. All baselines are our reproductions under the same protocol. SHuBERT (A), (C1) and (C2) are three reproductions that differ in preprocessing and weight decay.</p>
+  <p class="note">Every method is trained for translation on the same 785 hours of YouTube-ASL and then fine-tuned per dataset. OpenASL is also split by whether the source video is in YouTube-ASL. All baselines are our reproductions under the same protocol. Uni-Sign is not re-implemented. We run its <a href="https://github.com/ZechengLi19/Uni-Sign">official code</a> unmodified and only match our data to it, using our own RTMPose keypoints rather than any keypoints or weights released by Uni-Sign. SHuBERT (A), (C1) and (C2) are three reproductions that differ in preprocessing and weight decay.</p>
   <div class="table-wrap"><table>
     <thead><tr><th>Method</th><th class="l">Input</th><th>How2Sign</th><th>STEM</th><th>OpenASL all</th><th>unseen</th><th>seen</th></tr></thead>
     <tbody>
@@ -231,7 +231,7 @@ footer{padding:28px 0 48px;color:var(--muted);font-size:14px;text-align:center;b
 
 <section>
   <h2>Code, data and weights</h2>
-  <p><a href="https://github.com/hongrui16/MoGloss">GitHub</a>: the model, both pretraining stages, translation, recognition and evaluation scripts, the preprocessing for new data (RTMPose extraction, pseudo-gloss prompt and parser, sign lexicon), and our reproductions of Uni-Sign, the YouTube-ASL baseline and SHuBERT.</p>
+  <p><a href="https://github.com/hongrui16/MoGloss">GitHub</a>: the model, both pretraining stages, translation, recognition and evaluation scripts, the preprocessing for new data (RTMPose extraction, pseudo-gloss prompt and parser, sign lexicon), and our reproductions of Uni-Sign, the YouTube-ASL baseline and SHuBERT. For Uni-Sign we use only its <a href="https://github.com/ZechengLi19/Uni-Sign">official code</a>, unmodified. Our scripts read our keypoints, captions and splits into the inputs that code expects and run it on one GPU with gradient accumulation instead of deepspeed.</p>
   <p><a href="https://huggingface.co/datasets/HenryH101/MoGloss">Hugging Face</a>: RTMPose keypoints of every clip, MediaPipe landmarks used by the SHuBERT reproduction, captions and pseudo-glosses, every split used in the paper, and the weights of our models and of the Uni-Sign and YouTube-ASL baseline reproductions (CC BY-NC 4.0).</p>
 </section>
 
