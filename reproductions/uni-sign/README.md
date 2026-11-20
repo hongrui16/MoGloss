@@ -3,7 +3,7 @@
 Our reproduction of Uni-Sign (Li et al., "Uni-Sign: Toward Unified Sign Language Understanding at Scale", ICLR 2025) under the
 shared protocol of the paper.
 
-**Uni-Sign is not re-implemented.** We run the official Uni-Sign code (https://github.com/ZechengLi19/Uni-Sign, commit `eed438b`) unmodified: its own model, pose features, batching, loss, argument defaults and metrics. Our scripts only match our data to it, reading the released keypoints, captions and splits into the inputs the official code expects. The one other difference is the launcher (one GPU with gradient accumulation instead of deepspeed, same clips per update).
+**Uni-Sign is not re-implemented.** We run the official Uni-Sign code (https://github.com/ZechengLi19/Uni-Sign, commit `eed438b`) unmodified: its own model, pose features, batching, loss, argument defaults and metrics. We use only its code, not the keypoints or weights released by Uni-Sign. Our scripts only match our data to it, reading our own RTMPose keypoints, captions and splits into the inputs the official code expects. The one other difference is the launcher (one GPU with gradient accumulation instead of deepspeed, same clips per update).
 
 Runs:
 

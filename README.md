@@ -203,7 +203,7 @@ pseudo-glosses from captions with a local open-weight language model. See the RE
 `reproductions/` holds the code and commands of our reproductions of Uni-Sign, the YouTube-ASL baseline and SHuBERT
 under the same data and protocol. Each folder has its own README.
 
-**Uni-Sign is not re-implemented.** We run the official Uni-Sign code (https://github.com/ZechengLi19/Uni-Sign, commit `eed438b`) unmodified: its own model, pose features, batching, loss, argument defaults and metrics. Our scripts only match our data to it, reading the released keypoints, captions and splits into the inputs the official code expects. The one other difference is the launcher (one GPU with gradient accumulation instead of deepspeed, same clips per update).
+**Uni-Sign is not re-implemented.** We run the official Uni-Sign code (https://github.com/ZechengLi19/Uni-Sign, commit `eed438b`) unmodified: its own model, pose features, batching, loss, argument defaults and metrics. We use only its code, not the keypoints or weights released by Uni-Sign. Our scripts only match our data to it, reading our own RTMPose keypoints, captions and splits into the inputs the official code expects. The one other difference is the launcher (one GPU with gradient accumulation instead of deepspeed, same clips per update).
 
 ## Citation
 
