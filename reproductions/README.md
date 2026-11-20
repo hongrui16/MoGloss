@@ -4,10 +4,12 @@ Code of the three methods we reproduce in the paper, trained on the same clips a
 
 | folder | method | runs in the paper |
 |---|---|---|
-| `uni-sign/` | Uni-Sign (Li et al., ICLR 2025), official code + our single-GPU drivers | setting A pose only and pose + RGB, setting B, WLASL |
+| `uni-sign/` | Uni-Sign (Li et al., ICLR 2025), [official code](https://github.com/ZechengLi19/Uni-Sign) used unmodified + our data readers | setting A pose only and pose + RGB, setting B, WLASL |
 | `youtube_asl_baseline/` | YouTube-ASL baseline (Uthus et al., NeurIPS 2023), T5-v1.1-Base on keypoints | setting A |
 | `shubert/` | SHuBERT (Gueuwou et al.), released encoder + our ByT5-Base translation head | setting A, runs A, C1, C2 |
 | `common/` | readers of the MoGloss release, video frame mapping, OpenASL unseen / seen scoring | |
+
+**Uni-Sign is not re-implemented.** We run the official Uni-Sign code (https://github.com/ZechengLi19/Uni-Sign, commit `eed438b`) unmodified: its own model, pose features, batching, loss, argument defaults and metrics. Our scripts only match our data to it, reading the released keypoints, captions and splits into the inputs the official code expects. The one other difference is the launcher (one GPU with gradient accumulation instead of deepspeed, same clips per update).
 
 Each folder has a README with the upstream dependency, the commands of every paper run stage by stage and the deviations from the
 original paper.
