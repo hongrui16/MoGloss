@@ -5,7 +5,7 @@ It is pretrained in two stages, masked motion modeling (MMM) followed by joint m
 pseudo-glosses, and is then used for sign language translation (SLT) and isolated sign language recognition (ISLR).
 
 Project page: **https://hongrui16.github.io/MoGloss** |
-Paper: **[arXiv:XXXX.XXXXX](https://arxiv.org/abs/XXXX.XXXXX)** (link will be updated) |
+Paper: **[arXiv:2611.25333](https://arxiv.org/abs/2611.25333)** |
 Data, splits and all model weights: **https://huggingface.co/datasets/HenryH101/MoGloss**
 
 **If you use this code, the data or the weights, please cite our paper** (see [Citation](#citation)).
@@ -211,7 +211,7 @@ If you find this work useful, please cite
 @article{hong2026mogloss,
   title   = {MoGloss: Joint Motion and Pseudo-Gloss Pretraining for American Sign Language Understanding},
   author  = {Hong, Rui and Ko{\v{s}}eck{\'a}, Jana},
-  journal = {arXiv preprint arXiv:XXXX.XXXXX},
+  journal = {arXiv preprint arXiv:2611.25333},
   year    = {2026}
 }
 ```
