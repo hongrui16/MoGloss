@@ -218,6 +218,19 @@ under the same data and protocol. Each folder has its own README.
 
 **Uni-Sign is not re-implemented.** We run the official Uni-Sign code (https://github.com/ZechengLi19/Uni-Sign, commit `eed438b`) unmodified: its own model, pose features, batching, loss, argument defaults and metrics. We use only its code, not the keypoints or weights released by Uni-Sign. Our scripts only match our data to it, reading our own RTMPose keypoints, captions and splits into the inputs the official code expects. The one other difference is the launcher (one GPU with gradient accumulation instead of deepspeed, same clips per update).
 
+## Citation
+
+If you find this work useful, please cite
+
+```bibtex
+@article{hong2026mogloss,
+  title   = {MoGloss: Joint Motion and Pseudo-Gloss Pretraining for American Sign Language Understanding},
+  author  = {Hong, Rui and Ko{\v{s}}eck{\'a}, Jana},
+  journal = {arXiv preprint arXiv:2611.25333},
+  year    = {2026}
+}
+```
+
 ## License
 
 Code: MIT (see `LICENSE`). Data and weights on Hugging Face: CC BY-NC 4.0, and parts derived from a source dataset are
